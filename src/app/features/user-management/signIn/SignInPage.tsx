@@ -11,7 +11,7 @@ function SignInPage() {
   const intl = useIntl();
 
   const onLogin = async (values: any) => {
-    console.log('USER DATA FOR LOGIN');
+    console.log('USER DATA FOR LOGIN: ', values);
   }
 
   return <>
@@ -21,9 +21,9 @@ function SignInPage() {
         <div className="relative flex flex-col justify-center w-2/3 min-h-full md:w-2/3 lg:w-1/4">
           <div>
             <div className="flex justify-center">
-              {/* <span className="text-6xl font-semibold text-primary-500">
-                Habesha
-              </span> */}
+              <span className="text-6xl font-semibold text-primary-500">
+                Welcome
+              </span>
             </div>
             <div className="text-xl text-center font-bold my-6">
               <FormattedMessage
@@ -108,7 +108,7 @@ function SignInPage() {
                 <div>
                   <Button
                     type='primary'
-                    className="w-full"
+                    className="w-full bg-primary border-primary hover:bg-primary hover:border-primary focus:bg-primary"
                     htmlType="submit"
                     size="large"
                   >
@@ -121,7 +121,7 @@ function SignInPage() {
                     className="text-primary-500"
                     to={{ pathname: '/account/forgot' }}
                   >
-                    <Button type="link" style={{ marginLeft: -15 }}>
+                    <Button type="link" style={{ marginLeft: -15 }} className="text-primary hover:text-primary">
                       <FormattedMessage
                         id="login.forgot.password"
                         defaultMessage="Forgot password?"
