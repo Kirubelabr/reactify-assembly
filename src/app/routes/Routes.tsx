@@ -14,7 +14,7 @@ function AppRoutes() {
 
   return (
     <Routes>
-      <Route path="/" element={<Navigate to={'/sign-in'} />} />
+      <Route path="/" element={<Navigate to={'/home'} />} />
       <Route path="home" element={<HomePage />} />
       <Route path="admin" element={<AdminPage />} />
       <Route path="meeting" element={<MeetingPage />} />

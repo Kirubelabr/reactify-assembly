@@ -3,7 +3,11 @@ import AppRoutes from './routes/Routes';
 
 function App() {
   return (
-    <AppRoutes />
+    <>
+      <div className='h-screen'>
+        <AppRoutes />
+      </div>
+    </>
   );
 }
 

@@ -1,4 +1,4 @@
-// @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -11,9 +11,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f7f7f7;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.homeCard {
+  .ant-card-body {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.ant-image-preview-operations-operation,
+.ant-image-preview-root {
+    display: none;
+}
+
+.ant-image {
+  pointer-events: none;
+}
+.ant-image-mask {
+  display: none;
 }

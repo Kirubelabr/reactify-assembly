@@ -1,0 +1,19 @@
+.homeCard {
+  padding: 12px 0;
+  width: 100%;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+  transition: 0.4s ease-out;
+
+  .ant-card-body {
+  padding: 24x;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.divider {
+  width: 0;
+  margin: 0.5rem 6.4rem;
+  border-left: 0.1rem solid #e1dfdd;
+  height: 400px;
+}
