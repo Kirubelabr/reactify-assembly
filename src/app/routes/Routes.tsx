@@ -9,7 +9,6 @@ import HomePage from "../features/home/HomePage";
 import MeetingPage from "../features/meeting/MeetingPage";
 import PollingPage from "../features/polling/PollingPage";
 import SignInPage from "../features/user-management/signIn/SignInPage";
-import SignUpPage from "../features/user-management/signUp/SignUpPage";
 
 function AppRoutes() {
 
@@ -21,7 +20,6 @@ function AppRoutes() {
       <Route path="meeting" element={<MeetingPage />} />
       <Route path="polls" element={<PollingPage />} />
       <Route path="sign-in" element={<SignInPage />} />
-      <Route path="sign-up" element={<SignUpPage />} />
 
     </Routes>
 
