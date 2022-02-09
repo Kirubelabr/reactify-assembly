@@ -1,5 +1,4 @@
-import { Avatar, Table, Tabs } from 'antd';
-import { Header } from 'antd/lib/layout/layout';
+import { Table, Tabs } from 'antd';
 import React from 'react';
 
 function MeetingPage() {
@@ -69,19 +68,14 @@ function MeetingPage() {
   ];
 
   return <>
-    <div className='h-screen bg-light'>
-      <Header className='bg-light flex justify-end items-center'>
-        <Avatar size={40} className='uppercase text-xs bg-dark-accent cursor-pointer'>KA</Avatar>
-      </Header>
-      <Tabs defaultActiveKey="1" centered size='large'>
-        <TabPane tab="Shareholders" key="1">
-          <Table columns={columns} dataSource={data} />
-        </TabPane>
-        <TabPane tab="Attended Shareholders" key="2">
-          <Table columns={columns} dataSource={data} />
-        </TabPane>
-      </Tabs>
-    </div>
+    <Tabs defaultActiveKey="1" centered size='large'>
+      <TabPane tab="Shareholders" key="1">
+        <Table columns={columns} dataSource={data} />
+      </TabPane>
+      <TabPane tab="Attended Shareholders" key="2">
+        <Table columns={columns} dataSource={data} />
+      </TabPane>
+    </Tabs>
   </>;
 }
 

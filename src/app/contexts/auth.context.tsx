@@ -100,7 +100,6 @@ const AuthProvider = ({ children }) => {
   };
 
   const isAdmin = (): boolean => {
-    console.log('USER ROLES: ', authState.user);
     // @ts-ignore: Object is possibly 'undefined'.
     return authState?.user?.roles?.includes('admin');
   };

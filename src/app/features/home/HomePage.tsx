@@ -1,10 +1,29 @@
 import { Card, Image } from 'antd';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/auth.context';
 import './Home.scss';
 
-
 function HomePage() {
+
+  const auth = useContext(AuthContext);
+
+  const renderAdminLink = () => {
+    if (auth.isAdmin && auth.isAdmin()) {
+      return <Link to={'/admin'} className='homeCard mb-3 cursor-pointer'>
+        <Card className='border-none'>
+          <Image className='' src='/assets/images/settings.png' width={48} />
+          <div className='ml-6'>
+            <div className='text-xl font-bold capitalize'>Administrator</div>
+            <div className='text-sm text-slate-400'>Meeting and Polls Dashboard</div>
+          </div>
+        </Card>
+      </Link>
+    } else {
+      return <></>
+    }
+  }
+
   return (
     <>
       <div className='lg:w-3/4 lg:h-5/6 flex justify-center items-center mx-auto flex-row sm:flex-col sm:w-full'>
@@ -19,15 +38,9 @@ function HomePage() {
           </div>
           <div className='divider'></div>
           <div className='flex flex-col justify-start items-start'>
-            <Link to={'/admin'} className='homeCard mb-3 cursor-pointer'>
-              <Card className='border-none'>
-                <Image className='' src='/assets/images/settings.png' width={48} />
-                <div className='ml-6'>
-                  <div className='text-xl font-bold capitalize'>Administrator</div>
-                  <div className='text-sm text-slate-400'>Meeting and Polls Dashboard</div>
-                </div>
-              </Card>
-            </Link>
+
+            {renderAdminLink()}
+
             <Link to={'/meeting'} className='homeCard mb-3 cursor-pointer'>
               <Card className='border-none'>
                 <Image className='' src='/assets/images/job-interview.png' width={48} />
