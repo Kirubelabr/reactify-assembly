@@ -9,7 +9,6 @@ import { PersonaAuthObservable } from '../lib/utilities/persona.auth.observable'
 const AuthContext = createContext<AuthContextProps>({});
 
 const { Provider } = AuthContext;
-
 interface AuthContextProps {
   authState?: AuthState;
   setAuthState?: (authInfo: AuthState) => void;
@@ -19,7 +18,8 @@ interface AuthContextProps {
   hasRoles?: (roles: string[]) => boolean;
 }
 
-const AuthProvider = (children: any) => {
+// @ts-ignore: Object is possibly 'undefined'.
+const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const token = localStorage.getItem(constants.TOKEN);
@@ -46,7 +46,7 @@ const AuthProvider = (children: any) => {
           if (loggedInUser) {
             authItems = {
               token: accessToken,
-              user: loggedInUser,
+              user: loggedInUser.user,
               expiresAt: (Date.now() + 1000 * 1000).toString(),
             };
           }
@@ -79,6 +79,7 @@ const AuthProvider = (children: any) => {
   };
 
   const logout = (redirect = true) => {
+
     localStorage.removeItem(constants.TOKEN);
     localStorage.removeItem(constants.USER);
     localStorage.removeItem(constants.EXPIRES_AT);
@@ -86,12 +87,12 @@ const AuthProvider = (children: any) => {
 
     setAuthInfo({ token: '', expiresAt: '', user: {} });
     if (redirect) {
-      navigate('/account/login');
+      navigate('/sign-in', { replace: true });
     }
   };
 
   const isAuthenticated = () => {
-    console.log('DOES THIS AUTHENTICATED: ', authState.token);
+
     if (!authState.token || !authState.expiresAt) {
       return false;
     }
@@ -99,7 +100,9 @@ const AuthProvider = (children: any) => {
   };
 
   const isAdmin = (): boolean => {
-    return authState?.user?.roles?.includes('admin') || false;
+    console.log('USER ROLES: ', authState.user);
+    // @ts-ignore: Object is possibly 'undefined'.
+    return authState?.user?.roles?.includes('admin');
   };
 
   const hasRoles = (roles: string[]) => {

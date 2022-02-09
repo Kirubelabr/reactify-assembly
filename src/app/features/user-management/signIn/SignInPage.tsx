@@ -21,7 +21,6 @@ function SignInPage() {
   const auth = params.get('auth');
 
   const onSignIn = async (values: any) => {
-    if (auth && !window.opener) return window.close();
     try {
 
       setLoading(true);
@@ -29,16 +28,17 @@ function SignInPage() {
 
       loginApi(values.username, values.password).then(
         (data: any) => {
+
           storage.setItem('accessToken', data?.token);
 
           if (auth) {
             window.opener.postMessage(
               {
-                token: data?.accessToken?.accessToken,
+                token: data?.token,
                 user: data?.user,
                 expiresAt: (
                   Date.now() +
-                  data?.accessToken.expiresIn * 1000
+                  data?.expiresIn * 1000
                 ).toString(),
               },
               '*'
@@ -47,14 +47,14 @@ function SignInPage() {
           }
 
           authContext.setAuthState && authContext.setAuthState({
-            token: data?.accessToken?.accessToken,
+            token: data?.token,
             user: data?.user,
             expiresAt: (
               Date.now() +
-              data?.accessToken?.expiresIn * 1000
+              data?.expiresIn * 1000
             ).toString(),
           });
-          navigate('/home');
+          navigate('/home', { replace: true });
         },
         (error: any) => {
           setLoading(false);

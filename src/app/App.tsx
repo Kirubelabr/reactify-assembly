@@ -1,12 +1,11 @@
-import { Avatar } from 'antd';
-import { Header } from 'antd/lib/layout/layout';
 import React from 'react';
+import { AuthProvider } from './contexts/auth.context';
 import AppRoutes from './routes/Routes';
 
 function App() {
   return (
     <>
-      <AppRoutes />
+      <AuthProvider children={<AppRoutes />} />
     </>
   );
 }
