@@ -6,7 +6,7 @@ interface ILayout {
   component: React.ReactNode;
 }
 
-function Layout({ component }: ILayout) {
+function AppLayout({ component }: ILayout) {
   return (
     <div className='h-screen bg-light'>
       <Header className='bg-light flex justify-end items-center'>
@@ -17,4 +17,4 @@ function Layout({ component }: ILayout) {
   );
 }
 
-export default Layout;
+export default AppLayout;

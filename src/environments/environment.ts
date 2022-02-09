@@ -9,7 +9,7 @@ export const environment = {
     '824608355808-d7k6m7rci3fq7u0bgoiu028v9e9vvcif.apps.googleusercontent.com',
   urls: {
     app: '/app',
-    api: 'localhost:5000/api',
+    api: 'http://localhost:5000/api',
     presence: 'localhost:5500',
     challenge: 'localhost:5577',
     extension:

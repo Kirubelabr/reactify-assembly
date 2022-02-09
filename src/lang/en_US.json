@@ -2,7 +2,7 @@
 
   "general.text.or":"OR",
 
-  "login.welcome": "Sign In",
+  "login.welcome": "Welcome back! Sign in",
   "login.required.field":"This field is required",
   "login.email":"Email",
   "login.password": "Password",

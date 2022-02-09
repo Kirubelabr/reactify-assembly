@@ -19,7 +19,6 @@ interface AuthContextProps {
   hasRoles?: (roles: string[]) => boolean;
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 const AuthProvider = (children: any) => {
   const navigate = useNavigate();
 
@@ -92,6 +91,7 @@ const AuthProvider = (children: any) => {
   };
 
   const isAuthenticated = () => {
+    console.log('DOES THIS AUTHENTICATED: ', authState.token);
     if (!authState.token || !authState.expiresAt) {
       return false;
     }
@@ -123,3 +123,4 @@ const AuthProvider = (children: any) => {
 };
 
 export { AuthContext, AuthProvider };
+
