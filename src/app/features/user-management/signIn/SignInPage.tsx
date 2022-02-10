@@ -162,6 +162,7 @@ function SignInPage() {
 
                 <div>
                   <Button
+                    loading={loading}
                     type='primary'
                     className="w-full bg-primary border-primary hover:bg-primary hover:border-primary focus:bg-primary"
                     htmlType="submit"

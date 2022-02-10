@@ -2,24 +2,29 @@ import { ArrowLeftOutlined, LogoutOutlined } from '@ant-design/icons';
 import { Dropdown, Menu, Tooltip } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
 import { Header } from 'antd/lib/layout/layout';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/auth.context';
 
 interface ILayout {
   component: React.ReactNode;
   navigateBack?: boolean
 }
 
-const menu = (
-  <Menu>
-    <Menu.Item key={1} icon={<LogoutOutlined />}>
-      <div className=''>Sign Out</div>
-    </Menu.Item>
-  </Menu>
-);
-
 function PageLayout({ component, navigateBack }: ILayout) {
+  const auth = useContext(AuthContext);
 
+  const onLogout = () => {
+    auth.logout && auth.logout();
+  };
+
+  const menu = (
+    <Menu>
+      <Menu.Item key={1} icon={<LogoutOutlined />}>
+        <div onClick={onLogout}>Sign Out</div>
+      </Menu.Item>
+    </Menu>
+  );
 
   const renderNavigateBack = () => navigateBack && <div className='font-semibold cursor-pointer flex items-center' onClick={() => navigate('/home')}>
     <Tooltip placement="bottom" title={'Back'}>
@@ -40,7 +45,7 @@ function PageLayout({ component, navigateBack }: ILayout) {
 
         <Dropdown overlay={menu} placement="bottomLeft">
           <Avatar size={40} className='uppercase text-xs bg-dark-accent cursor-pointer flex justify-center items-center'>
-            <div className='text-sm font-semibold'>KA</div>
+            <div className='text-sm font-semibold'>{`${auth.authState?.user?.firstName?.substring(0, 1)}${auth.authState?.user?.lastName?.substring(0, 1)}`}</div>
           </Avatar>
         </Dropdown>
       </Header>
