@@ -1,3 +1,4 @@
+import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { Button, Form, Input } from 'antd';
 import React, { useContext, useState } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
@@ -140,7 +141,7 @@ function SignInPage() {
                       },
                     ]}
                   >
-                    <Input
+                    <Input.Password
                       type="password"
                       placeholder={intl.formatMessage({
                         id: 'login.password',
@@ -148,6 +149,7 @@ function SignInPage() {
                       })}
                       size="large"
                       autoComplete="current-password"
+                      iconRender={(visible: boolean) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                     />
                   </Form.Item>
                 </div>

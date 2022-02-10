@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import './styles/index.scss';
 
 const localStorageEnv = localStorage.getItem('env');
-const env = localStorageEnv ? JSON.parse(localStorageEnv ?? '{}') : {};
+// const env = localStorageEnv ? JSON.parse(localStorageEnv ?? '{}') : {};
 
 const locale = navigator.language;
 

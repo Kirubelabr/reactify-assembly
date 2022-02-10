@@ -9,8 +9,7 @@ interface ILayout {
   component: React.ReactNode;
 }
 
-// @ts-ignore: Object is possibly 'undefined'.
-function AppLayout({ component }) {
+function AppLayout({ component }: ILayout) {
 
   const { logout } = useContext(AuthContext);
 

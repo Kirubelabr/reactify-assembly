@@ -4,7 +4,6 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import AppLayout from "../components/AppLayout";
 import PageLayout from "../components/PageLayout";
 import { AuthContext } from "../contexts/auth.context";
 import AdminPage from "../features/admin/AdminPage";
@@ -46,10 +45,10 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to={'/home'} />} />
-      <Route path="home" element={<AuthenticatedRoute component={<AppLayout component={<HomePage />} />} />} />
-      <Route path="admin" element={<AdminRoute component={<PageLayout component={<AdminPage />} />} />} />
-      <Route path="meeting" element={<AuthenticatedRoute component={<PageLayout component={<MeetingPage />} />} />} />
-      <Route path="polls" element={<AuthenticatedRoute component={<PageLayout component={<PollingPage />} />} />} />
+      <Route path="home" element={<AuthenticatedRoute component={<PageLayout component={<HomePage />} />} />} />
+      <Route path="admin" element={<AdminRoute component={<PageLayout component={<AdminPage />} navigateBack={true} />} />} />
+      <Route path="meeting" element={<AuthenticatedRoute component={<PageLayout component={<MeetingPage />} navigateBack={true} />} />} />
+      <Route path="polls" element={<AuthenticatedRoute component={<PageLayout component={<PollingPage />} navigateBack={true} />} />} />
       <Route path="sign-in" element={<SignInPage />} />
     </Routes>
   );

@@ -1,79 +1,70 @@
 import { Table, Tabs } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getAttendedShareholdersList, getShareholdersList } from './api/getShareholders';
 
 function MeetingPage() {
+  const [shareholdersList, setShareholdersList] = useState([]);
+  const [attendedShareholdersList, setAttendedShareholdersList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { TabPane } = Tabs;
 
+  useEffect(() => {
+    getShareholdersList(setShareholdersList, setLoading);
+  }, []);
+
+  useEffect(() => {
+    getAttendedShareholdersList(setAttendedShareholdersList, setLoading);
+  }, []);
+
   const columns = [
+
     {
-      title: 'Name',
-      dataIndex: 'name',
-    },
-    {
-      title: 'Chinese Score',
-      dataIndex: 'chinese',
+      title: 'Shareholder ID',
+      dataIndex: 'shareholderId',
       sorter: {
-        compare: (a: any, b: any) => a.chinese - b.chinese,
-        multiple: 3,
+        compare: (a: any, b: any) => a.shareholderId - b.shareholderId
       },
     },
     {
-      title: 'Math Score',
-      dataIndex: 'math',
+      title: 'English Full Name',
+      dataIndex: 'englishFullName',
       sorter: {
-        compare: (a: any, b: any) => a.math - b.math,
-        multiple: 2,
+        compare: (a: any, b: any) => a.englishFullName - b.englishFullName
       },
     },
     {
-      title: 'English Score',
-      dataIndex: 'english',
+      title: 'Amharic Full Name',
+      dataIndex: 'amharicFullName',
       sorter: {
-        compare: (a: any, b: any) => a.english - b.english,
-        multiple: 1,
+        compare: (a: any, b: any) => a.amharicFullName - b.amharicFullName
+      },
+    },
+    {
+      title: 'Phone Number',
+      dataIndex: 'mobile1',
+      sorter: {
+        compare: (a: any, b: any) => a.mobile1 - b.mobile1
+      },
+    },
+    {
+      title: 'Paid Up Capital',
+      dataIndex: 'paidUpCapital',
+      sorter: {
+        compare: (a: any, b: any) => a.paidUpCapital - b.paidUpCapital
       },
     },
   ];
 
-  const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      chinese: 98,
-      math: 60,
-      english: 70,
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      chinese: 98,
-      math: 66,
-      english: 89,
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      chinese: 98,
-      math: 90,
-      english: 70,
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      chinese: 88,
-      math: 99,
-      english: 89,
-    },
-  ];
+  const data: any[] = [];
 
   return <>
     <Tabs defaultActiveKey="1" centered size='large'>
       <TabPane tab="Shareholders" key="1">
-        <Table columns={columns} dataSource={data} />
+        <Table rowKey={'id'} loading={loading} columns={columns} dataSource={shareholdersList} />
       </TabPane>
       <TabPane tab="Attended Shareholders" key="2">
-        <Table columns={columns} dataSource={data} />
+        <Table rowKey={'id'} columns={columns} dataSource={attendedShareholdersList} />
       </TabPane>
     </Tabs>
   </>;
