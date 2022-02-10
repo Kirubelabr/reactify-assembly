@@ -24,6 +24,16 @@ This project is made with `create-react-app` alongside with `craco` to showcase 
 
 I've added data fetching using API calls to get few data from server which is in my local machine. You might not be able to `sign-in` or get any data access for the moment. I did this to avoid using `json-server` and I wanted to include `Authentication` and `Authorization` methods in the app. So, it'll feel a real world application.
 
+## Technologies Used
+
+* React - V17
+* Antd - for UI elements
+* TailwindCSS - as CSS utility
+* Craco - to override React configurations (and also to look fancy lol)
+* React router dom - for page navigation
+* axios - for API call
+
+
 ### Finally
 
 If you had anything to say reach out to me with my personal email address `kirubelabr@gmail.com`.
